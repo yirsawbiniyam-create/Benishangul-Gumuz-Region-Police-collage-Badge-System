@@ -30,15 +30,25 @@ export const BadgeCardBack: React.FC<BadgeCardBackProps> = ({
     verificationUrlOverride ||
     `${origin}/?verify=${encodeURIComponent(data.badgeId)}`;
 
+  const scaledWidth = Math.round(385 * scale);
+  const scaledHeight = Math.round(245 * scale);
+
   return (
     <div
-      onClick={onClick}
       style={{
-        transform: `scale(${scale})`,
-        transformOrigin: "top left",
+        width: `${scaledWidth}px`,
+        height: `${scaledHeight}px`,
       }}
-      className={`relative w-[385px] h-[245px] rounded-2xl overflow-hidden shadow-2xl border-4 border-[#eab308] bg-gradient-to-b from-[#0f2d5e] via-[#163a75] to-[#0b1b3b] text-white flex flex-col justify-between p-2.5 select-none print:shadow-none ${className}`}
+      className="shrink-0 relative overflow-visible flex items-start justify-start select-none"
     >
+      <div
+        onClick={onClick}
+        style={{
+          transform: `scale(${scale})`,
+          transformOrigin: "top left",
+        }}
+        className={`relative w-[385px] h-[245px] rounded-2xl overflow-hidden shadow-2xl border-4 border-[#eab308] bg-gradient-to-b from-[#0f2d5e] via-[#163a75] to-[#0b1b3b] text-white flex flex-col justify-between p-2.5 select-none print:shadow-none ${className}`}
+      >
       {/* 1. Large Watermark of Police Commission Logo in Background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
         <img
@@ -146,6 +156,7 @@ export const BadgeCardBack: React.FC<BadgeCardBackProps> = ({
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

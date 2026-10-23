@@ -246,19 +246,19 @@ export const BadgeVerifierView: React.FC<BadgeVerifierViewProps> = ({
             <h4 className="text-sm font-bold text-slate-100 mb-4 text-center">
               የባጁ የፊት እና የኋላ ገፅ እይታ / Front & Back Cards
             </h4>
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 overflow-x-auto p-2">
+            <div className="flex flex-wrap items-center justify-center gap-6 overflow-visible p-2">
               <div className="flex flex-col items-center gap-2">
                 <span className="text-xs font-bold text-blue-400 bg-slate-800 px-3 py-1 rounded-full border border-slate-700 shadow">
                   የፊት ገፅ (Front)
                 </span>
-                <BadgeCardFront data={badge} scale={0.95} />
+                <BadgeCardFront data={badge} scale={0.88} />
               </div>
 
               <div className="flex flex-col items-center gap-2">
                 <span className="text-xs font-bold text-blue-400 bg-slate-800 px-3 py-1 rounded-full border border-slate-700 shadow">
                   የኋላ ገፅ (Back with QR)
                 </span>
-                <BadgeCardBack data={badge} scale={0.95} />
+                <BadgeCardBack data={badge} scale={0.88} />
               </div>
             </div>
           </div>

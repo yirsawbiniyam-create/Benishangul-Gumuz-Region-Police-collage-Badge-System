@@ -353,11 +353,11 @@ export const BadgeDirectory: React.FC<BadgeDirectoryProps> = ({
             </div>
 
             {/* Card Render */}
-            <div className="flex justify-center py-2">
+            <div className="flex justify-center py-2 overflow-visible">
               {activeTabSide === "FRONT" ? (
-                <BadgeCardFront data={selectedBadgeForModal} scale={1} />
+                <BadgeCardFront data={selectedBadgeForModal} scale={0.95} />
               ) : (
-                <BadgeCardBack data={selectedBadgeForModal} scale={1} />
+                <BadgeCardBack data={selectedBadgeForModal} scale={0.95} />
               )}
             </div>
 

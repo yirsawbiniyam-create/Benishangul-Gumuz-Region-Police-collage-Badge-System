@@ -158,30 +158,8 @@ export const PublicVerificationPage: React.FC<PublicVerificationPageProps> = ({
       </header>
 
       {/* Main Public Verification Body */}
-      <main className="max-w-3xl mx-auto px-4 py-6 w-full flex-1 space-y-6">
-        {/* Quick Search Bar for Verification */}
-        <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl shadow-xl backdrop-blur">
-          <form onSubmit={handleSearchSubmit} className="flex gap-2">
-            <div className="relative flex-1">
-              <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-              <input
-                type="text"
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-                placeholder="የባጅ ቁጥር ያስገቡ (ምሳሌ፡ BGRPC-1001)..."
-                className="w-full pl-10 pr-4 py-2.5 text-xs font-mono font-bold bg-slate-950 text-slate-100 border border-slate-700 rounded-xl focus:ring-2 focus:ring-amber-400 focus:outline-none placeholder:text-slate-500"
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl shadow-lg transition flex items-center gap-1.5 cursor-pointer shrink-0"
-            >
-              <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
-              ያረጋግጡ
-            </button>
-          </form>
-        </div>
+      <main className="max-w-4xl mx-auto px-2 sm:px-4 py-6 w-full flex-1 space-y-6">
+        {/* Quick Search Bar hidden when scanned as requested: "ስካን ሲደረግ ይህን እንዳይመጣ አድርግ ሂድን አድርግ" */}
 
         {/* Loading State */}
         {loading ? (
@@ -382,23 +360,23 @@ export const PublicVerificationPage: React.FC<PublicVerificationPageProps> = ({
                   </div>
                 </div>
 
-                {/* Both Front and Back Cards Side-by-Side on Medium+ Screens */}
+                {/* Both Front and Back Cards - Fully visible without any cutoff */}
                 <div className="pt-4 border-t border-slate-800">
                   <h4 className="text-xs font-black text-slate-300 text-center uppercase tracking-wider mb-4">
                     የባጁ ዲጂታል የፊት እና የኋላ ገፅ (DIGITAL BADGE CARDS)
                   </h4>
-                  <div className="flex flex-col md:flex-row items-center justify-center gap-6 overflow-x-auto py-2">
+                  <div className="flex flex-wrap items-center justify-center gap-6 py-2 overflow-visible">
                     <div className="flex flex-col items-center gap-2">
                       <span className="text-[11px] font-black text-amber-400 bg-slate-950 px-3 py-1 rounded-full border border-slate-800">
                         የፊት ገፅ (FRONT SIDE)
                       </span>
-                      <BadgeCardFront data={badge} scale={0.9} />
+                      <BadgeCardFront data={badge} scale={0.85} />
                     </div>
                     <div className="flex flex-col items-center gap-2">
                       <span className="text-[11px] font-black text-amber-400 bg-slate-950 px-3 py-1 rounded-full border border-slate-800">
                         የኋላ ገፅ (BACK SIDE)
                       </span>
-                      <BadgeCardBack data={badge} scale={0.9} />
+                      <BadgeCardBack data={badge} scale={0.85} />
                     </div>
                   </div>
                 </div>
@@ -407,21 +385,21 @@ export const PublicVerificationPage: React.FC<PublicVerificationPageProps> = ({
 
             {/* View 2: Front Card Solo */}
             {activeViewTab === "FRONT" && (
-              <div className="flex flex-col items-center justify-center py-4 space-y-3 animate-fadeIn">
+              <div className="flex flex-col items-center justify-center py-4 space-y-3 animate-fadeIn overflow-visible">
                 <span className="text-xs font-black text-amber-400 bg-slate-950 px-3 py-1 rounded-full border border-slate-800">
                   የኮሌጅ ባጁ የፊት ገፅ እይታ
                 </span>
-                <BadgeCardFront data={badge} scale={1.05} />
+                <BadgeCardFront data={badge} scale={0.95} />
               </div>
             )}
 
             {/* View 3: Back Card Solo */}
             {activeViewTab === "BACK" && (
-              <div className="flex flex-col items-center justify-center py-4 space-y-3 animate-fadeIn">
+              <div className="flex flex-col items-center justify-center py-4 space-y-3 animate-fadeIn overflow-visible">
                 <span className="text-xs font-black text-amber-400 bg-slate-950 px-3 py-1 rounded-full border border-slate-800">
                   የኮሌጅ ባጁ የኋላ ገፅ እይታ (ከQR ኮድ ጋር)
                 </span>
-                <BadgeCardBack data={badge} scale={1.05} />
+                <BadgeCardBack data={badge} scale={0.95} />
               </div>
             )}
           </div>
