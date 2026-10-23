@@ -161,6 +161,11 @@ export default function App() {
     }
   };
 
+  // Sync browser document title for search and tab display
+  useEffect(() => {
+    document.title = "ቤጉ ፖሊስ ኮሌጅ ባጅ ሲሰተም - Benishangul-Gumuz Region Police College Badge System";
+  }, []);
+
   // 1. Subscribe to Firestore `badges` collection live updates with anti-lag timeout
   useEffect(() => {
     const badgesCollection = collection(db, "badges");
