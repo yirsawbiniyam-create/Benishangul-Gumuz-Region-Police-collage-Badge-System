@@ -7,12 +7,9 @@ import {
   EyeOff,
   AlertCircle,
   ArrowRight,
-  Zap,
-  CheckCircle,
   ShieldAlert,
-  Sparkles,
 } from "lucide-react";
-import { DEFAULT_COMMISSION_LOGO, DEFAULT_ETHIOPIA_FLAG, DEFAULT_REGION_FLAG } from "../data/defaults";
+import { DEFAULT_COMMISSION_LOGO } from "../data/defaults";
 
 interface AdminLoginPageProps {
   loginLogo?: string;
@@ -32,7 +29,6 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [autoFilled, setAutoFilled] = useState(false);
 
   // Security / Anti-Brute Force Protection State
   const [failedAttempts, setFailedAttempts] = useState<number>(() => {
@@ -144,47 +140,15 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
     });
   };
 
-  const handleUseDefaultCreds = () => {
-    setUsername("admincollage");
-    setPassword("collage1234");
-    setErrorMessage("");
-    setAutoFilled(true);
-    setTimeout(() => setAutoFilled(false), 2500);
-  };
-
   return (
     <div className="min-h-screen bg-[#070d19] text-slate-100 flex flex-col justify-between p-4 selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
       {/* Background Decorative Lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-blue-600/10 blur-[140px] pointer-events-none rounded-full" />
       <div className="absolute bottom-0 right-10 w-[400px] h-[300px] bg-amber-500/10 blur-[120px] pointer-events-none rounded-full" />
 
-      {/* Top Banner Flags & Header */}
-      <div className="max-w-md w-full mx-auto pt-4 flex items-center justify-between px-3 relative z-10">
-        <div className="flex items-center gap-2 bg-slate-900/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-800">
-          <img
-            src={DEFAULT_ETHIOPIA_FLAG}
-            alt="Ethiopia Flag"
-            className="w-7 h-4.5 object-cover rounded shadow"
-          />
-          <span className="text-[10px] font-bold tracking-wider text-slate-300 uppercase hidden sm:inline">
-            የኢትዮጵያ ፌዴራላዊ ዴሞክራሲያዊ ሪፐብሊክ
-          </span>
-        </div>
-        <div className="flex items-center gap-2 bg-slate-900/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-800">
-          <span className="text-[10px] font-bold tracking-wider text-amber-400 uppercase hidden sm:inline">
-            ቤኒሻንጉል ጉሙዝ ክልል
-          </span>
-          <img
-            src={DEFAULT_REGION_FLAG}
-            alt="Region Flag"
-            className="w-7 h-4.5 object-cover rounded shadow"
-          />
-        </div>
-      </div>
-
       {/* Main Login Card */}
-      <div className="max-w-md w-full mx-auto my-auto py-6 relative z-10">
-        <div className="bg-[#0f1d33]/90 backdrop-blur-2xl border border-blue-900/40 hover:border-blue-700/50 transition-colors rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] p-6 sm:p-8 space-y-5 relative overflow-hidden ring-1 ring-white/10">
+      <div className="max-w-md w-full mx-auto my-auto py-8 relative z-10">
+        <div className="bg-[#0f1d33]/90 backdrop-blur-2xl border border-blue-900/40 hover:border-blue-700/50 transition-colors rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] p-6 sm:p-8 space-y-6 relative overflow-hidden ring-1 ring-white/10">
           {/* Subtle Accent Glow Line on top border */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-amber-400 to-indigo-600" />
 
@@ -334,54 +298,6 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
               )}
             </button>
           </form>
-
-          {/* Quick Default Credential Helper with Ultra-Professional "Auto Fill" Button */}
-          <div className="bg-gradient-to-b from-slate-900/90 to-slate-950/90 p-4 rounded-2xl border border-blue-950/80 shadow-md space-y-2.5">
-            <div className="flex items-center justify-between text-[11px] text-slate-400 font-semibold border-b border-slate-800/80 pb-1.5">
-              <span className="flex items-center gap-1.5 text-slate-300">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                የመነሻ ነባሪ መለያ (Default Credentials):
-              </span>
-              <span className="text-[10px] text-emerald-400 font-mono font-bold bg-emerald-950/70 border border-emerald-600/40 px-2 py-0.5 rounded-full">
-                Active
-              </span>
-            </div>
-
-            <div className="text-xs font-mono text-amber-300 font-bold flex items-center justify-center gap-3 py-1 bg-slate-950/60 rounded-xl border border-slate-800/60">
-              <span className="flex items-center gap-1">
-                <span className="text-slate-400 font-sans font-medium">user:</span>{" "}
-                <span className="text-white bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700">admincollage</span>
-              </span>
-              <span className="text-slate-500">•</span>
-              <span className="flex items-center gap-1">
-                <span className="text-slate-400 font-sans font-medium">pass:</span>{" "}
-                <span className="text-white bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700">collage1234</span>
-              </span>
-            </div>
-
-            {/* Professional "በአንድ ጠቅታ ምላው (Auto Fill)" Button */}
-            <button
-              type="button"
-              onClick={handleUseDefaultCreds}
-              className={`w-full py-2.5 px-3 rounded-xl border font-bold text-xs flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md active:scale-[0.98] ${
-                autoFilled
-                  ? "bg-emerald-600 text-white border-emerald-400 shadow-emerald-900/40"
-                  : "bg-gradient-to-r from-amber-500/20 via-yellow-500/15 to-amber-500/20 hover:from-amber-500/30 hover:to-yellow-500/30 text-amber-300 hover:text-amber-200 border-amber-500/40 hover:border-amber-400/80 shadow-amber-950/30"
-              }`}
-            >
-              {autoFilled ? (
-                <>
-                  <CheckCircle className="w-4 h-4 text-white animate-bounce" />
-                  <span>በስኬት ተሞልቷል! (Auto Filled Successfully)</span>
-                </>
-              ) : (
-                <>
-                  <Zap className="w-4 h-4 text-amber-400 animate-pulse" />
-                  <span>በአንድ ጠቅታ ምላው (Auto Fill)</span>
-                </>
-              )}
-            </button>
-          </div>
         </div>
       </div>
 
