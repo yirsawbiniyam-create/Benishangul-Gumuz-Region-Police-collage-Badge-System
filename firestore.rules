@@ -1,0 +1,29 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Police College Badges collection (Public verification & management)
+    match /badges/{badgeId} {
+      // Public verification: Anyone can read badges to verify officer/cadet identity via QR code or ID lookup
+      allow read: if true;
+
+      // Create and Update: Anyone can register or update badge details in Firestore
+      allow create, update: if true;
+
+      // Delete: Manage badges in Firestore
+      allow delete: if true;
+    }
+
+    // College System Settings & Admin Configuration (Admin Auth & Login Logo Branding)
+    match /settings/{settingId} {
+      // Allow reading and writing settings (login logo, credentials)
+      allow read, write: if true;
+    }
+  }
+}

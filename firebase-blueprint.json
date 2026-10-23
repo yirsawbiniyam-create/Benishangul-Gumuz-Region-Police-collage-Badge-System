@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "badges": {
+      "title": "Police College Badges",
+      "description": "Collection of police badges for Benishangul Gumuz Region Police College",
+      "type": "object",
+      "properties": {
+        "badgeId": { "type": "string" },
+        "fullNameAmharic": { "type": "string" },
+        "fullNameEnglish": { "type": "string" },
+        "departmentAmharic": { "type": "string" },
+        "departmentEnglish": { "type": "string" },
+        "rankAmharic": { "type": "string" },
+        "rankEnglish": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "headshotPhoto": { "type": "string" },
+        "ethiopiaFlag": { "type": "string" },
+        "regionFlag": { "type": "string" },
+        "commissionLogo": { "type": "string" },
+        "officialStamp": { "type": "string" },
+        "signature": { "type": "string" },
+        "status": { "type": "string" },
+        "issueDate": { "type": "string" },
+        "expiryDate": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["badgeId", "fullNameAmharic", "fullNameEnglish", "rankAmharic", "departmentAmharic"]
+    },
+    "settings": {
+      "title": "System Settings & Admin Configuration",
+      "description": "Admin credentials and customizable branding logos for login and college system",
+      "type": "object",
+      "properties": {
+        "username": { "type": "string" },
+        "password": { "type": "string" },
+        "loginLogo": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
+    }
+  }
+}
